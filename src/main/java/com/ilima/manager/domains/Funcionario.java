@@ -1,22 +1,32 @@
 package com.ilima.manager.domains;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Funcionario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
 	private String nome;
 	private String cargo;
+
+	@OneToMany(mappedBy = "funcionario")
+	private Set<Entrega> entregas = new HashSet<>();
+
+	@OneToMany(mappedBy = "funcionario")
+	private Set<Devolucao> devolucoes = new HashSet<>();
 
 	public Funcionario() {
 
@@ -51,6 +61,14 @@ public class Funcionario implements Serializable {
 
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
+	}
+
+	public Set<Entrega> getEntregas() {
+		return entregas;
+	}
+
+	public void setEntregas(Set<Entrega> entregas) {
+		this.entregas = entregas;
 	}
 
 	@Override

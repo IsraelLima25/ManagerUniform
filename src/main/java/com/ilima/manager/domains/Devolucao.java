@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -23,6 +25,10 @@ public class Devolucao implements Serializable {
 
 	@OneToMany(mappedBy = "id.item")
 	private Set<ItemDevolucao> item = new HashSet<>();
+
+	@ManyToOne
+	@JoinColumn(name = "funcionario_id")
+	private Funcionario funcionario;
 
 	public Devolucao() {
 

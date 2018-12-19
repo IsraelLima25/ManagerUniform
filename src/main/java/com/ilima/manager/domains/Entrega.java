@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -21,9 +23,13 @@ public class Entrega implements Serializable {
 	private Integer id;
 
 	private Date instante;
-	
-	@OneToMany(mappedBy="id.item")	
+
+	@OneToMany(mappedBy = "id.item")
 	private Set<ItemEntrega> item = new HashSet<>();
+	
+	@ManyToOne
+	@JoinColumn(name="funcionario_id")
+	private Funcionario funcionario;
 
 	public Entrega() {
 
@@ -50,7 +56,7 @@ public class Entrega implements Serializable {
 	public void setInstante(Date instante) {
 		this.instante = instante;
 	}
-	
+
 	public Set<ItemEntrega> getItem() {
 		return item;
 	}
@@ -59,6 +65,13 @@ public class Entrega implements Serializable {
 		this.item = item;
 	}
 
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
+	}
 
 	@Override
 	public int hashCode() {
