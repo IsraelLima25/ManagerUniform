@@ -4,8 +4,6 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 
-import com.ilima.manager.enuns.TamanhoItem;
-
 @Entity
 public class Boina extends Item {
 
@@ -15,8 +13,8 @@ public class Boina extends Item {
 
 	}
 
-	public Boina(Integer id, String descricao, Date instante, String cor, Integer quantidade, Integer quantidadeDeRisco,
-			TamanhoItem tamanho) {
+	public Boina(Integer id, String descricao, Date instante, String cor, Integer quantidade, Integer quantidadeDeRisco
+			) {
 		super(id, descricao, instante, cor, quantidade, quantidadeDeRisco);
 
 	}
