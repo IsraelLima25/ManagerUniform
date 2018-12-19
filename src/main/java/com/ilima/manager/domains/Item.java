@@ -35,8 +35,13 @@ public abstract class Item implements Serializable {
 	@OneToMany(mappedBy = "id.item")
 	private Set<ItemPedido> pedido = new HashSet<>();
 	
-	@OneToMany(mappedBy="id.entrega")
+	@JsonIgnore
+	@OneToMany(mappedBy = "id.entrega")
 	private Set<ItemEntrega> entrega = new HashSet<>();
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "id.devolucao")
+	private Set<ItemDevolucao> devolucao = new HashSet<>();
 
 	public Item() {
 
@@ -115,6 +120,14 @@ public abstract class Item implements Serializable {
 
 	public void setEntrega(Set<ItemEntrega> entrega) {
 		this.entrega = entrega;
+	}
+
+	public Set<ItemDevolucao> getDevolucao() {
+		return devolucao;
+	}
+
+	public void setDevolucao(Set<ItemDevolucao> devolucao) {
+		this.devolucao = devolucao;
 	}
 
 	@Override
