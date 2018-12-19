@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Entrega implements Serializable {
@@ -26,10 +28,13 @@ public class Entrega implements Serializable {
 
 	@OneToMany(mappedBy = "id.item")
 	private Set<ItemEntrega> item = new HashSet<>();
-	
+
 	@ManyToOne
-	@JoinColumn(name="funcionario_id")
+	@JoinColumn(name = "funcionario_id")
 	private Funcionario funcionario;
+
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "entrega")
+	private Devolucao devolucao;
 
 	public Entrega() {
 
@@ -71,6 +76,14 @@ public class Entrega implements Serializable {
 
 	public void setFuncionario(Funcionario funcionario) {
 		this.funcionario = funcionario;
+	}
+
+	public Devolucao getDevolucao() {
+		return devolucao;
+	}
+
+	public void setDevolucao(Devolucao devolucao) {
+		this.devolucao = devolucao;
 	}
 
 	@Override

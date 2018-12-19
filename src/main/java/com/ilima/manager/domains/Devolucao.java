@@ -2,16 +2,12 @@ package com.ilima.manager.domains;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Devolucao implements Serializable {
@@ -19,25 +15,24 @@ public class Devolucao implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private Date instante;
+	private String observacao;
 
-	@OneToMany(mappedBy = "id.item")
-	private Set<ItemDevolucao> item = new HashSet<>();
-
-	@ManyToOne
-	@JoinColumn(name = "funcionario_id")
-	private Funcionario funcionario;
+	@OneToOne
+	@JoinColumn(name = "entrega_id")
+	@MapsId
+	private Entrega entrega;
 
 	public Devolucao() {
 
 	}
 
-	public Devolucao(Integer id, Date instante) {
+	public Devolucao(Integer id, Date instante, String observacao) {
 		super();
 		this.id = id;
 		this.instante = instante;
+		this.observacao = observacao;
 	}
 
 	public Integer getId() {
@@ -56,12 +51,20 @@ public class Devolucao implements Serializable {
 		this.instante = instante;
 	}
 
-	public Set<ItemDevolucao> getItem() {
-		return item;
+	public String getObservacao() {
+		return observacao;
 	}
 
-	public void setItem(Set<ItemDevolucao> item) {
-		this.item = item;
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
+	}
+
+	public Entrega getEntrega() {
+		return entrega;
+	}
+
+	public void setEntrega(Entrega entrega) {
+		this.entrega = entrega;
 	}
 
 	@Override

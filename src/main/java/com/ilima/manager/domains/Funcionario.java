@@ -23,10 +23,7 @@ public class Funcionario implements Serializable {
 	private String cargo;
 
 	@OneToMany(mappedBy = "funcionario")
-	private Set<Entrega> entregas = new HashSet<>();
-
-	@OneToMany(mappedBy = "funcionario")
-	private Set<Devolucao> devolucoes = new HashSet<>();
+	private Set<Entrega> entregas = new HashSet<>();	
 
 	public Funcionario() {
 

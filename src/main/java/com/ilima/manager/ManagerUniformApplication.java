@@ -12,6 +12,7 @@ import com.ilima.manager.domains.Boina;
 import com.ilima.manager.domains.Calca;
 import com.ilima.manager.domains.Calcado;
 import com.ilima.manager.domains.Camisa;
+import com.ilima.manager.domains.Devolucao;
 import com.ilima.manager.domains.Entrega;
 import com.ilima.manager.domains.Funcionario;
 import com.ilima.manager.domains.ItemEntrega;
@@ -22,7 +23,6 @@ import com.ilima.manager.enuns.TamanhoItem;
 import com.ilima.manager.repositories.DevolucaoRepository;
 import com.ilima.manager.repositories.EntregaRepository;
 import com.ilima.manager.repositories.FuncionarioRepository;
-import com.ilima.manager.repositories.ItemDevolucaoRepository;
 import com.ilima.manager.repositories.ItemEntregaRepository;
 import com.ilima.manager.repositories.ItemPedidoRepository;
 import com.ilima.manager.repositories.ItemRepository;
@@ -43,8 +43,6 @@ public class ManagerUniformApplication implements CommandLineRunner {
 	private ItemEntregaRepository repoItemEntrega;
 	@Autowired
 	private DevolucaoRepository repoDevolucao;
-	@Autowired
-	private ItemDevolucaoRepository repoItemDevolucao;
 	@Autowired
 	private FuncionarioRepository repoFuncionario;
 
@@ -104,8 +102,15 @@ public class ManagerUniformApplication implements CommandLineRunner {
 		c3.getEntrega().addAll(Arrays.asList(ie3));
 		e2.getItem().addAll(Arrays.asList(ie3));
 
-		repoEntrega.saveAll(Arrays.asList(e1));
-		repoItemEntrega.saveAll(Arrays.asList(ie1, ie2));
+		Devolucao d1 = new Devolucao(null, new Date(), "Por Defeitos de Fábrica!!!");
+		d1.setEntrega(e1);
+
+		e1.setDevolucao(d1);
+
+		repoEntrega.saveAll(Arrays.asList(e1, e2));
+		repoItemEntrega.saveAll(Arrays.asList(ie1, ie2, ie3));
+		repoDevolucao.saveAll(Arrays.asList(d1));
+
 	}
 
 }
