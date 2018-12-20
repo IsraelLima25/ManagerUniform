@@ -28,12 +28,12 @@ public abstract class Item implements Serializable {
 	private String descricao;
 	private Date instante;
 	private String cor;
-	private Integer quantidade;
+	private Integer quantidadeEstoque;
 	private Integer quantidadeDeRisco;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "id.item")
-	private Set<ItemPedido> pedido = new HashSet<>();
+	private Set<ItemPedido> pedidos = new HashSet<>();
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "id.entrega")
@@ -50,7 +50,7 @@ public abstract class Item implements Serializable {
 		this.descricao = descricao;
 		this.instante = instante;
 		this.cor = cor;
-		this.quantidade = quantidade;
+		this.quantidadeEstoque = quantidade;
 		this.quantidadeDeRisco = quantidadeDeRisco;
 	}
 
@@ -86,12 +86,12 @@ public abstract class Item implements Serializable {
 		this.cor = cor;
 	}
 
-	public Integer getQuantidade() {
-		return quantidade;
+	public Integer getQuantidadeEstoque() {
+		return quantidadeEstoque;
 	}
 
-	public void setQuantidade(Integer quantidade) {
-		this.quantidade = quantidade;
+	public void setQuantidadeEstoque(Integer quantidade) {
+		this.quantidadeEstoque = quantidade;
 	}
 
 	public Integer getQuantidadeDeRisco() {
@@ -103,11 +103,11 @@ public abstract class Item implements Serializable {
 	}
 
 	public Set<ItemPedido> getPedidos() {
-		return pedido;
+		return pedidos;
 	}
 
 	public void setPedidos(Set<ItemPedido> pedidos) {
-		this.pedido = pedidos;
+		this.pedidos = pedidos;
 	}
 
 	public Set<ItemEntrega> getEntrega() {

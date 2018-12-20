@@ -11,7 +11,7 @@ public class Calca extends Item {
 
 	private static final long serialVersionUID = 1L;
 
-	private Integer tamanho;
+	private TamanhoItem tamanho;
 
 	public Calca() {
 
@@ -20,15 +20,15 @@ public class Calca extends Item {
 	public Calca(Integer id, String descricao, Date instante, String cor, Integer quantidade, Integer quantidadeDeRisco,
 			TamanhoItem tamanho) {
 		super(id, descricao, instante, cor, quantidade, quantidadeDeRisco);
-		this.tamanho = tamanho.getCod();
+		this.tamanho = tamanho;
 
 	}
 
-	public Integer getTamanho() {
+	public TamanhoItem getTamanho() {
 		return tamanho;
 	}
 
-	public void setTamanho(Integer tamanho) {
+	public void setTamanho(TamanhoItem tamanho) {
 		this.tamanho = tamanho;
 	}
 

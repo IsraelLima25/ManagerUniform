@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Devolucao implements Serializable {
 
@@ -18,7 +20,8 @@ public class Devolucao implements Serializable {
 	private Integer id;
 	private Date instante;
 	private String observacao;
-
+	
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "entrega_id")
 	@MapsId

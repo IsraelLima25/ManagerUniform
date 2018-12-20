@@ -12,11 +12,11 @@ public class ItemPedido implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
 	@JsonIgnore
+	@EmbeddedId
 	private ItemPedidoPk id = new ItemPedidoPk();
 
-	private Integer quantidade;
+	private Integer quantidadePedido;
 
 	public ItemPedido() {
 
@@ -25,23 +25,33 @@ public class ItemPedido implements Serializable {
 	public ItemPedido(Pedido pedido, Item item, Integer quantidade) {
 		id.setPedido(pedido);
 		id.setItem(item);
-		this.quantidade = quantidade;
+		this.quantidadePedido = quantidade;
 	}
 
-	public ItemPedidoPk getId() {
-		return id;
+	@JsonIgnore
+	public Pedido getPedido() {
+		return id.getPedido();
 	}
 
-	public void setId(ItemPedidoPk id) {
-		this.id = id;
+	public void setPedido(Pedido obj) {
+		id.setPedido(obj);
+
 	}
 
-	public Integer getQuantidade() {
-		return quantidade;
+	public Item getItem() {
+		return id.getItem();
 	}
 
-	public void setQuantidade(Integer quantidade) {
-		this.quantidade = quantidade;
+	public void setItem(Item obj) {
+		id.setItem(obj);
+	}
+
+	public Integer getQuantidadePedido() {
+		return quantidadePedido;
+	}
+
+	public void setQuantidadePedido(Integer quantidade) {
+		this.quantidadePedido = quantidade;
 	}
 
 	@Override

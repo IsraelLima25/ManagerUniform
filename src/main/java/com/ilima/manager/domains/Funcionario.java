@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Funcionario implements Serializable {
 
@@ -21,7 +23,8 @@ public class Funcionario implements Serializable {
 
 	private String nome;
 	private String cargo;
-
+	
+	@JsonIgnore
 	@OneToMany(mappedBy = "funcionario")
 	private Set<Entrega> entregas = new HashSet<>();	
 

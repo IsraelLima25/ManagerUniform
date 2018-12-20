@@ -8,19 +8,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ilima.manager.domains.Item;
-import com.ilima.manager.services.ItemService;
+import com.ilima.manager.domains.Devolucao;
+import com.ilima.manager.services.DevolucaoService;
 
 @RestController
-@RequestMapping(value = "/itens")
-public class ItemResource {
+@RequestMapping(value = "/devolucoes")
+public class DevolucaoResource {
 
 	@Autowired
-	private ItemService service;
+	private DevolucaoService service;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Item>> findAll() {
-		List<Item> list = service.findAll();		
+	public ResponseEntity<List<Devolucao>> findAll() {
+		List<Devolucao> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 

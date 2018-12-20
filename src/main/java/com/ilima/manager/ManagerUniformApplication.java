@@ -69,8 +69,8 @@ public class ManagerUniformApplication implements CommandLineRunner {
 		ItemPedido i3 = new ItemPedido(p2, c2, 8);
 		ItemPedido i4 = new ItemPedido(p2, c4, 7);
 
-		p1.getItens().addAll(Arrays.asList(i1, i2));
-		p2.getItens().addAll(Arrays.asList(i3, i4));
+		p1.getItem().addAll(Arrays.asList(i1, i2));
+		p2.getItem().addAll(Arrays.asList(i3, i4));
 
 		c1.getPedidos().addAll(Arrays.asList(i1));
 		c2.getPedidos().addAll(Arrays.asList(i3));

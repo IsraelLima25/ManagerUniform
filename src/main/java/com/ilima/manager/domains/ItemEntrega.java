@@ -25,6 +25,22 @@ public class ItemEntrega implements Serializable {
 		this.quantidade = quantidade;
 	}
 
+	public ItemEntregaPK getId() {
+		return id;
+	}
+
+	public void setId(ItemEntregaPK id) {
+		this.id = id;
+	}
+
+	public Integer getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(Integer quantidade) {
+		this.quantidade = quantidade;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -48,22 +64,6 @@ public class ItemEntrega implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-
-	public ItemEntregaPK getId() {
-		return id;
-	}
-
-	public void setId(ItemEntregaPK id) {
-		this.id = id;
-	}
-
-	public Integer getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(Integer quantidade) {
-		this.quantidade = quantidade;
 	}
 
 }

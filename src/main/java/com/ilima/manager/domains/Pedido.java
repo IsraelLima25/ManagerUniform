@@ -24,9 +24,9 @@ public class Pedido implements Serializable {
 
 	private Date instante;
 	private EstadoPedido estado;
-		
+
 	@OneToMany(mappedBy = "id.pedido")
-	private Set<ItemPedido> item = new HashSet<>();
+	private Set<ItemPedido> itens = new HashSet<>();
 
 	public Pedido() {
 
@@ -63,12 +63,12 @@ public class Pedido implements Serializable {
 		this.estado = estado;
 	}
 
-	public Set<ItemPedido> getItens() {
-		return item;
+	public Set<ItemPedido> getItem() {
+		return itens;
 	}
 
-	public void setItens(Set<ItemPedido> itens) {
-		this.item = itens;
+	public void setItem(Set<ItemPedido> item) {
+		this.itens = item;
 	}
 
 	@Override

@@ -1,5 +1,7 @@
 package com.ilima.manager.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,9 @@ public class ItemService {
 
 	public Item insert(Item obj) {
 		return repo.save(obj);
+	}
 
+	public List<Item> findAll() {
+		return repo.findAll();
 	}
 }

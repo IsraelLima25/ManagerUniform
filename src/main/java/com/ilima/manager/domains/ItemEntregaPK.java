@@ -6,15 +6,19 @@ import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Embeddable
 public class ItemEntregaPK implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "entrega_id")
 	private Entrega entrega;
-
+	
+	
 	@ManyToOne
 	@JoinColumn(name = "item_id")
 	private Item item;

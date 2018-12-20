@@ -22,12 +22,12 @@ public class Calcado extends Item {
 
 	}
 
-	public Integer getTamanho() {
+	public Integer getNumero() {
 		return numero;
 	}
 
-	public void setTamanho(Integer tamanho) {
-		this.numero = tamanho;
+	public void setTamanho(Integer numero) {
+		this.numero = numero;
 	}
 
 }
